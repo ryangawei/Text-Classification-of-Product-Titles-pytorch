@@ -10,7 +10,7 @@ Solution for The 10th National College Students Service Outsourcing Innovation a
 * Python 3
 * torch==1.4.0 with CUDA
 * jieba
-* [AlfredWGA/nlputils](www.nlpasdf.com)
+* [AlfredWGA/nlputils](https://github.com/AlfredWGA/nlputils)
 * tqdm
 
 ## Dataset
