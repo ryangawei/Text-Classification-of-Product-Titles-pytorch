@@ -150,7 +150,7 @@ if __name__ == '__main__':
                         type=int, help='Batch size. Default 128.')
     parser.add_argument('--model', default='textbigru', choices=model_list, type=str,
                         help='The classification model. Default textcnn.')
-    parser.add_argument('--mode', default='char', type=str,
+    parser.add_argument('--mode', default='char', choices=['char', 'word'], type=str,
                         help='Type of the embedding input.')
     parser.add_argument('-e', '--epoch', default=100,
                         type=int, help='Number of training epoch.')
