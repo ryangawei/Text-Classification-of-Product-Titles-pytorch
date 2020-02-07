@@ -23,7 +23,7 @@ LOG_DIR = 'log'
 CHECKPOINTS_DIR = 'checkpoints'
 
 # 字符级的文本最长长度
-MAX_CHAR_TEXT_LENGTH = 48
+MAX_CHAR_TEXT_LENGTH = 47
 # 词级的文本最长长度
 MAX_WORD_TEXT_LENGTH = 27
 

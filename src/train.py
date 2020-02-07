@@ -28,8 +28,10 @@ if not os.path.exists(config.CHECKPOINTS_DIR):
 def train(**kwargs):
     if kwargs['mode'] == 'char':
         dataset = np.load(config.TRAIN_CHAR_PATH, allow_pickle=True)
+        maxlen = config.MAX_CHAR_TEXT_LENGTH
     else:
         dataset = np.load(config.TRAIN_WORD_PATH, allow_pickle=True)
+        maxlen = config.MAX_WORD_TEXT_LENGTH
 
     x_set = dataset['title_ids']
     y_set = dataset['label_ids']
@@ -37,8 +39,8 @@ def train(**kwargs):
     x_train, x_valid, y_train, y_valid = train_test_split(x_set, y_set, test_size=0.2,
                                                           shuffle=True, stratify=y_set)
 
-    train_set = TitleDataset(x_train, y_train)
-    valid_set = TitleDataset(x_valid, y_valid)
+    train_set = TitleDataset(x_train, y_train, maxlen)
+    valid_set = TitleDataset(x_valid, y_valid, maxlen)
 
     logger.info('Train set size: {}, valid set size {}'.format(
         len(train_set), len(valid_set)))

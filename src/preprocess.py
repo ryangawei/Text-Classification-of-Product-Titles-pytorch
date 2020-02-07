@@ -70,7 +70,6 @@ def preprocess_dataset(samples_path, vocab_path, npz_path, mode='char'):
 
     for sample in tqdm(seg_samples, desc='Converting samples into ids'):
         # Convert all sample tokens to ids.
-        sample = tokenizer.pad_tokens_to_fixed_length(sample, max_length=max_length)
         title_id = tokenizer.convert_tokens_to_ids(sample)
         title_ids.append(title_id)
 
@@ -114,10 +113,10 @@ def show_length_distribution(npz_path):
     plt.ylabel('Number')
     plt.show()
 
-    ratio = 0.70
+    percentile = 0.85
     lengths = sorted(lengths)
-    index = int(len(lengths) * ratio)
-    print('The {} percentile is {}.'.format(ratio, lengths[index]))
+    index = int(len(lengths) * percentile)
+    print('The {} percentile is {}.'.format(percentile, lengths[index]))
 
 
 def count_lines(fpath):
@@ -169,9 +168,9 @@ def export_fit_embeddings(emb_path, npz_path, mode='char'):
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
-    # preprocess_dataset(TRAIN_PATH, VOCAB_CHAR_PATH, TRAIN_CHAR_PATH, mode='char')
-    # preprocess_dataset(TRAIN_PATH, VOCAB_WORD_PATH, TRAIN_WORD_PATH, mode='word')
-    # show_length_distribution(TRAIN_WORD_PATH)
-
+    preprocess_dataset(TRAIN_PATH, VOCAB_CHAR_PATH, TRAIN_CHAR_PATH, mode='char')
+    preprocess_dataset(TRAIN_PATH, VOCAB_WORD_PATH, TRAIN_WORD_PATH, mode='word')
+    # show_length_distribution(TRAIN_CHAR_PATH)
+    # show_length_distribution(TRAIN_CHAR_PATH)
     export_fit_embeddings(SGNS_CHAR_PATH, FIT_CHAR_PATH, mode='char')
     export_fit_embeddings(SGNS_WORD_PATH, FIT_WORD_PATH, mode='word')
