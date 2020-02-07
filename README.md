@@ -5,27 +5,27 @@ Classification for products on e-commerce platform according to product names.
 
 Solution for The 10th National College Students Service Outsourcing Innovation and Entrepreneurship Competition (【A01】2018 网络零售平台商品分类【浪潮】, 第十届中国大学生服务外包创新创业大赛).
 
-# Requirements
+## Requirements
 
 * Python 3
-* torch==1.4.0
+* torch==1.4.0 with CUDA
 * jieba
 * [AlfredWGA/nlputils](www.nlpasdf.com)
 * tqdm
 
-# Dataset
+## Dataset
 
-Training set can be downloaded from [here](https://drive.google.com/file/d/1SmTU52ibDFEyz8cWraxEbv9xUxeSW1by/view?usp=sharing).  
+Training set contains 500,000 product names and 1258 labels. (Download from [here](https://drive.google.com/file/d/1SmTU52ibDFEyz8cWraxEbv9xUxeSW1by/view?usp=sharing)).  
 Pre-trained Chinese word embeddings are obtained from this repo [Embedding/Chinese-Word-Vectors](https://github.com/Embedding/Chinese-Word-Vectors).  
 Word segementation are done by [jieba](https://github.com/fxsjy/jieba).
 
-# Pre-processing
+## Pre-processing
 
 Place all data files in the path specified in `config.py`.
 
     python preprocess.py 
 
-# Train our models
+## Train our models
 
 We implemented TextCNN, BiLSTM and BiGRU for text classification. We use character level (no word segmentation) and word level input.
 
